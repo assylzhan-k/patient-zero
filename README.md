@@ -32,9 +32,14 @@ My outbreak report (a screenshot of `output/outbreak.html`):
 
 A substring must contain consecutive characters, while a subsequence only has to keep the same order and may skip characters. Therefore, the LCS can match letters that are located at different positions in the two strains, so Shared core can be larger than the number of letters that are equal at exactly the same index.
 
+<img width="668" height="139" alt="Screenshot 2026-11-09 at 17 18 18" src="https://github.com/user-attachments/assets/f7c0c7d2-7f7c-4b39-bde7-8e8e4615cfdf" />
+
 ### Mission 3. What does the prefix function tell you, and why does the pointer in the text never go back in KMP? What is the Border length of my marker and what does it mean?
 
 The prefix function tells me the length of the longest proper prefix that is also a suffix for every prefix of the pattern. KMP uses this information after a mismatch, so it changes the position in the pattern instead of moving the text pointer backwards. My Border length is `3`, which means the longest proper prefix of my marker that is also its suffix has length 3.
+
+<img width="668" height="139" alt="Screenshot 2026-11-09 at 17 20 06" src="https://github.com/user-attachments/assets/d4efd1c2-1b03-45cb-a72f-ea25db2d9e26" />
+
 
 ### Mission 4. Why must you compare the letters after the hashes are equal? What happens to the cost of Rabin-Karp if many windows have the same hash?
 
@@ -43,6 +48,9 @@ Two different strings can have the same hash because of a hash collision, so I c
 ### Mission 5. What are the two states of a person in your DP, and how do you get the answer for a person from its children? Why does a greedy "test the person with most links first" not always give the cheapest answer?
 
 For every person I keep two states: the minimum cost when the person is tested and the minimum cost when the person is not tested. If the person is tested, each child can be tested or not tested, so I take the cheaper state; if the person is not tested, every child must be tested. A greedy choice can fail because a locally good choice can force expensive choices later in other parts of the tree.
+
+<img width="668" height="172" alt="Screenshot 2026-11-09 at 17 20 48" src="https://github.com/user-attachments/assets/239ad452-7dc9-4c3c-91f2-88743ae4cc8e" />
+
 
 ## AI use
 
