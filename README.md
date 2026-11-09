@@ -26,17 +26,17 @@ My outbreak report (a screenshot of `output/outbreak.html`):
 
 ### Mission 1. What does the cell d[i][j] of your table mean, and how is it computed from other cells?
 
-`d[i][j]` is the minimum number of edit operations needed to change the first `i` characters of strain A into the first `j` characters of strain B. If the current characters are equal, I take the diagonal value; otherwise I take the minimum of insertion, deletion and replacement and add 1.
+d[i][j] shows the minimum number of changes needed to turn the first i letters of strain A into the first j letters of strain B. I calculate it using the previous cells for insert, delete and replace, and choose the smallest value.
 
 ### Mission 2. How is the longest common subsequence different from the longest common substring? My Shared core is bigger than the number of letters that are the same at the same place: why?
 
-A substring must contain consecutive characters, while a subsequence only has to keep the same order and may skip characters. Therefore, the LCS can match letters that are located at different positions in the two strains, so Shared core can be larger than the number of letters that are equal at exactly the same index.
+A substring must be continuous, but a subsequence can skip letters as long as the order stays the same. Shared core can be bigger because matching letters do not need to be at the same positions.
 
 <img width="668" height="139" alt="Screenshot 2026-11-09 at 17 18 18" src="https://github.com/user-attachments/assets/f7c0c7d2-7f7c-4b39-bde7-8e8e4615cfdf" />
 
 ### Mission 3. What does the prefix function tell you, and why does the pointer in the text never go back in KMP? What is the Border length of my marker and what does it mean?
 
-The prefix function tells me the length of the longest proper prefix that is also a suffix for every prefix of the pattern. KMP uses this information after a mismatch, so it changes the position in the pattern instead of moving the text pointer backwards. My Border length is `3`, which means the longest proper prefix of my marker that is also its suffix has length 3.
+The prefix function tells how much of the pattern can be reused after a mismatch. KMP does not move the text pointer back because it uses this information to continue searching. My Border length is 3, so the longest prefix of the marker that is also its suffix has length 3.
 
 <img width="668" height="139" alt="Screenshot 2026-11-09 at 17 20 06" src="https://github.com/user-attachments/assets/d4efd1c2-1b03-45cb-a72f-ea25db2d9e26" />
 
@@ -47,7 +47,7 @@ Two different strings can have the same hash because of a hash collision, so I c
 
 ### Mission 5. What are the two states of a person in your DP, and how do you get the answer for a person from its children? Why does a greedy "test the person with most links first" not always give the cheapest answer?
 
-For every person I keep two states: the minimum cost when the person is tested and the minimum cost when the person is not tested. If the person is tested, each child can be tested or not tested, so I take the cheaper state; if the person is not tested, every child must be tested. A greedy choice can fail because a locally good choice can force expensive choices later in other parts of the tree.
+The two states are: the person is tested or the person is not tested. If the person is not tested, the children must be tested; if the person is tested, I choose the cheaper option for each child. Greedy does not always work because the best local choice can make the total cost bigger later.
 
 <img width="668" height="172" alt="Screenshot 2026-11-09 at 17 20 48" src="https://github.com/user-attachments/assets/239ad452-7dc9-4c3c-91f2-88743ae4cc8e" />
 
